@@ -1,0 +1,12 @@
+h1 {
+    color: firebrick;
+}
+
+.card-body p {
+    text-indent: 4rem;
+    text-align: justify;
+}
+
+.bookcover {
+    height: 20rem;
+}
