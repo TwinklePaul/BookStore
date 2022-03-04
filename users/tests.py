@@ -35,24 +35,35 @@ class CustomUserTests(TestCase):
         self.assertTrue(user.is_superuser)
 
 
-# class SignUpPageTests(TestCase):
-#     def setUp(self):
-#         self.response = self.client.get(reverse("signup"))
+class SignUpPageTests(TestCase):
 
-#     def test_signup_template(self):
-#         self.assertEqual(self.response.status_code, 200)
+    username = "testuser"
+    email = "testuser@test.com"
+
+    def setUp(self):
+        # self.response = self.client.get(reverse("signup"))
+        self.response = self.client.get(reverse("account_signup"))
+
+    def test_signup_template(self):
+        self.assertEqual(self.response.status_code, 200)
 #         self.assertTemplateUsed(self.response, "signup.html")
-#         self.assertContains(self.response, "Sign Up!")
-#         self.assertNotContains(self.response, "Log In!")
+        self.assertTemplateUsed(self.response, "account/signup.html")
+        self.assertContains(self.response, "Sign Up!")
+        self.assertNotContains(self.response, "Log In!")
 
-#     def test_signup_form(self):
-#         form = self.response.context.get("form")
-#         self.assertIsInstance(form, CustomUserCreationForm)
-#         self.assertContains(self.response, 'csrfmiddlewaretoken')
+    def test_signup_form(self):
+        #         form = self.response.context.get("form")
+        #         self.assertIsInstance(form, CustomUserCreationForm)
+        #         self.assertContains(self.response, 'csrfmiddlewaretoken')
 
-#     def test_signup_view(self):
-#         view = resolve("/accounts/signup/")
-#         self.assertEqual(
-#             view.func.__name__,
-#             SignUpView.as_view().__name__
-#         )
+        #     def test_signup_view(self):
+        #         view = resolve("/accounts/signup/")
+        #         self.assertEqual(
+        #             view.func.__name__,
+        #             SignUpView.as_view().__name__
+        #         )
+        newuser = get_user_model().objects.create_user(self.username, self.email)
+        self.assertEqual(get_user_model().objects.all().count(), 1)
+        self.assertEqual(get_user_model().objects.all()
+                         [0].username, self.username)
+        self.assertEqual(get_user_model().objects.all()[0].email, self.email)
