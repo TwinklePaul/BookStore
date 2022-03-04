@@ -22,7 +22,7 @@
                 <a href="https://www.amazon.in/Harry-Potter-Philosophers-Stone-Rowling/dp/1408855658" class="btn btn-primary">Buy the PaperBack.</a>
             {% else %}
                 <p class="card-text">You are not logged in. Log In to view details.</p>
-                <a href="{% url "login" %}">Log In</a> | <a href="{% url "signup" %}">Sign Up</a>
+                <a href="{% url "account_login" %}">Log In</a> | <a href="{% url "account_signup" %}">Sign Up</a>
             {% endif %}
         </div>
     </div>
