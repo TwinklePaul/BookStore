@@ -153,8 +153,8 @@ AUTHENTICATION_BACKENDS = (
 # django-allauth config
 SITE_ID = 1
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+DEFAULT_FROM_EMAIL = config('EMAIL_HOST_ADDRESS')
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
@@ -167,3 +167,10 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_ADDRESS = config('EMAIL_HOST_ADDRESS')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
