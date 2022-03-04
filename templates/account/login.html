@@ -1,23 +1,40 @@
 {% extends '_base.html' %}
-{% load socialaccount %}
 
 {% block title %}Log In{% endblock title %}
 
-{% load crispy_forms_tags %}
+{% load static %} 
+{% load crispy_forms_tags %} 
+{% load socialaccount %} 
+
 
 {% block content %}
-    <h1> Log In!</h1>
 
-    <div class="card py-4 px-4 my-2 my-3">
-        <form method="post">
-            {% csrf_token %}
-            {{ form|crispy }}
-            <input class="btn btn-success" type="submit" value="Log In">
-        </form>
-        <p class="mx-auto mt-3">
-            OR
-         </p>
-        <a class="btn btn-outline-primary mt-3" href="{% provider_login_url 'google' %}"><i class="fa-brands fa-google"></i> Sign In with Google </a>    
-    </div>
-    
+<div class="hero_area">
+    <section class="layout_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mx-auto ">
+                    <div class="detail-box">
+                        <div class="heading_container mb-5">
+                        <h2>
+                            Log In !
+                        </h2>
+                        </div>
+
+                        <form method="post">
+                            {% csrf_token %} 
+                            {{ form|crispy }}
+                            <input class="btn btn-success" type="submit" value="Log In!">
+                        </form>
+
+                        <img src="{% static 'images/Divider-css.png' %}" class="my-2" style="position:relative;">
+
+                        <a class="btn btn-outline-danger mt-3 py-3" style="width:100%;" href="{% provider_login_url 'google' %}"><i class="fa-brands fa-google"></i>   Log In with Google + </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
 {% endblock content %}

@@ -2,18 +2,36 @@
 
 {% block title %}Log Out{% endblock title %}
 
-{% load crispy_forms_tags %}
+{% load static %} 
+{% load crispy_forms_tags %} 
+
 
 {% block content %}
-    <h1> Log Out!</h1>
 
-    <div class="card py-4 px-4 my-2 my-3">
-        <p> Are you sure you want to logout? </p>
-        <form method="post" action="{% url "account_logout" %}">
-            {% csrf_token %}
-            {{ form|crispy }}
-            <input class="btn btn-danger" type="submit" value="Log Out">
-        </form>
-    </div>
-    
+<div class="hero_area">
+    <section class="layout_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mx-auto ">
+                    <div class="detail-box">
+                        <div class="heading_container mb-5">
+                        <h2>
+                            Log Out !
+                        </h2>
+                        </div>
+
+                        <p> Are you sure you wish to log out?
+
+                        <form method="post">
+                            {% csrf_token %} 
+                            {{ form|crispy }}
+                            <input class="btn btn-danger" type="submit" value="Confirm!">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
 {% endblock content %}
