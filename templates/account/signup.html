@@ -3,6 +3,7 @@
 {% block title %}Sign Up{% endblock title %}
 
 {% load crispy_forms_tags %}
+{% load socialaccount %}
 
 {% block content %}
     <h1> Sign Up!</h1>
@@ -13,6 +14,11 @@
             {{ form|crispy }}
             <input class="btn btn-success" type="submit" value="Sign Up">
         </form>
+
+        <p class="mx-auto mt-3">
+           OR
+        </p>
+        <a class="btn btn-outline-primary mt-3" href="{% provider_login_url 'google' %}"><i class="fa-brands fa-google"></i> Sign Up with Google </a>    
     </div>
     
 {% endblock content %}

@@ -14,9 +14,9 @@ services:
   db:
     image: postgres:14.2
     environment:
-      POSTGRES_USER: bookstore_admin
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: bookstore
+      POSTGRES_USER: "${DB_USER}"
+      POSTGRES_PASSWORD: "${DB_PASSWORD}"
+      POSTGRES_DB: "${DB_NAME}"
     restart: always
     volumes:
       - postgres_data:/var/lib/postgresql/data/
