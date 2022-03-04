@@ -28,6 +28,9 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'allauth',
     'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'fontawesomefree',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -136,6 +139,8 @@ ACCOUNT_LOGOUT_REDIRECT_URL = "home"
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIGUE_EMAIL = True
+SOCIALACCOUNT_QUERY_EMAIL = True
+ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
 # ACCOUNT_SESSION_REMEMBER = True  # default is true.. assigning it will remove the option of Remember Me Checkbox
@@ -150,3 +155,15 @@ SITE_ID = 1
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}

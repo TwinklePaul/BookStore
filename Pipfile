@@ -9,6 +9,7 @@ psycopg2 = "*"
 django-crispy-forms = "*"
 crispy-bootstrap5 = "*"
 django-allauth = "*"
+fontawesomefree = "*"
 
 [dev-packages]
 

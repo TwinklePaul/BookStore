@@ -1,0 +1,20 @@
+{% extends '_base.html' %}
+
+{% block title %}Sign In Via Google{% endblock title %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h1> Sign In Via Google!</h1>
+
+    <div class="card py-4 px-4 my-2 my-3">
+        <p>You are about to sign in using a third party account from Google.</p>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input class="btn btn-primary" type="submit" value="Continue">
+        </form>
+    </div>
+    
+{% endblock content %}
